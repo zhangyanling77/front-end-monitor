@@ -3,9 +3,16 @@ import getLastEvent from '../utils/getLastEvent';
 import getSelector from '../utils/getSelector';
 import tracker from '../utils/tracker';
 
+function getLines(stack) {
+  return stack.split('\n').slice(1).map(item => item.replace(/^\s+at\s+/g, "")).join('^');
+}
+
 export function injectJsError() {
-    let lastEvent = getLastEvent(); // 最后一个交互事件
+    // 监听全局未捕获的错误
     window.addEventListener('error', function (event) { // 错误事件对象
+      console.log('event', event) 
+      let lastEvent = getLastEvent(); // 最后一个交互事件  
+      console.log('lastEvent', lastEvent)
       // 脚本加载错误
       tracker.send({
         kind: 'stability',
@@ -18,8 +25,4 @@ export function injectJsError() {
         selector: lastEvent ? getSelector(lastEvent.path) : ''
       })
     }, true);
-
-    function getLines(stack) {
-        return stack.split('\n').slice(1).map(item => item.replace(/^\s+at\s+/g, "")).join('^');
-    }
 }
