@@ -4,6 +4,9 @@ import getSelector from '../utils/getSelector';
 import tracker from '../utils/tracker';
 
 function getLines(stack) {
+  if (!stack) {
+    return '';
+  }
   return stack.split('\n').slice(1).map(item => item.replace(/^\s+at\s+/g, "")).join('^');
 }
 
