@@ -34,11 +34,11 @@ class SendTracker {
     this.xhr.setRequestHeader('Content-Type', 'application/json'); // 请求体类型
     this.xhr.setRequestHeader('x-log-apiversion', '0.6.0'); // 版本号
     this.xhr.setRequestHeader('x-log-bodyrawsize', body.length); // 请求体大小
-    this.xhr.onload = function(response) {
-      console.log(response)
+    this.xhr.onload = function() {
+      // console.log()
     }
     this.xhr.onerror = function(error) {
-      console.log(error)
+      // console.log(error)
     }
     this.xhr.send(body)
   }
