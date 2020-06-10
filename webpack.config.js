@@ -12,16 +12,15 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    // 模拟请求
+    // 配置后端路由的  内部启动了express
     before(router) {
       router.get('/success', function (req, res) {
           res.json({ 
-            code: 0,
             success: true,
             data: {}
           });
       });
-      router.post('/error', function (req, res) {
+      router.post('/fail', function (req, res) {
           res.sendStatus(500);
       });
     }
