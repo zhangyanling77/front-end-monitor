@@ -7,25 +7,67 @@
 </head>
 <body>
   <div id="container">
-    <div class="content">
-      <input id="errorBtn" type="button" value="点击抛出错误" onclick="errorClick()">
-      <input id="promiseBtn" type="button" value="点击抛出Promise错误" onclick="promiseErrorClick()">
+    <div class="content" style="width:600px;word-wrap:break-word;">
+      <!-- <input id="errorBtn" type="button" value="点击抛出错误" onclick="errorClick()">
+      <input id="promiseBtn" type="button" value="点击抛出Promise错误" onclick="promiseErrorClick()"> -->
+      <!-- <input id="successBtn" type="button" value="ajax请求成功" onclick="sendAjaxSuccess()">
+      <input id="failBtn" type="button" value="ajax请求失败" onclick="sendAjaxFail()"> -->
     </div>
   </div>
   <script>
-    function errorClick() {
-      window.someVariable.error = 'error';
-    }
+    //  1.JS错误
+    // function errorClick() {
+    //   window.someVariable.error = 'error';
+    // }
+    
+    // 2.Promise错误
+    // function promiseErrorClick() {
+    //   new Promise(function (resolve, reject) {
+    //     window.someVariable.error = 'error';
+    //     // reject('error')
+    //   }).then(function(result) {
+    //     console.log(result)
+    //   })
+    // }
 
-    function promiseErrorClick() {
-      new Promise(function (resolve, reject) {
-        window.someVariable.error = 'error';
-        // reject('error')
-      }).then(function(result) {
-        console.log(result)
-      })
-    }
+    // 5.Ajax请求成功
+    // function sendAjaxSuccess() {
+    //   let xhr = new XMLHttpRequest();
+    //   xhr.open('GET', '/success', true);
+    //   xhr.responseType = 'json';
+    //   xhr.onload = function() {
+    //     console.log(xhr.response)
+    //   }
+    //   xhr.send();
+    // }
+
+    // 6.Ajax请求失败
+    // function sendAjaxFail() {
+    //   let xhr = new XMLHttpRequest();
+    //   xhr.open('POST', '/fail', true);
+    //   xhr.responseType = 'json';
+    //   xhr.onload = function() {
+    //     console.log(xhr.response)
+    //   }
+    //   xhr.onerror = function(error) {
+    //     console.log(error)
+    //   }
+    //   xhr.send(JSON.stringify({ name: 'zhangyanling' }));
+    // }
+
+    // 7.白屏检测
+    let content = document.getElementsByClassName('content')[0];
+    content.innerHTML = '<span>@</span>'.repeat(10000);
+
+    // 8.耗时
+    // DOM解析完成，即使依赖的的资源没有加载完，也会触发这个事件
+    document.addEventListener('DOMContentLoaded', function() {
+      let start = Date.now();
+      while((Date.now() - start) < 1000) {}
+    })
+
   </script>
-  <script src="/someError.js"></script>
+  <!-- 3.资源加载错误 -->
+  <!-- <script src="/some-non-existent-file.js"></script> -->
 </body>
 </html>
