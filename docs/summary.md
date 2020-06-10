@@ -39,6 +39,14 @@ UV | 指访问某个站点的不同IP地址的人数
 
 ## 3 前端监控流程
 
+- 数据上报
+
+- 分析和计算 将采集到的数据进行加工汇总
+
+- 可视化展示 将数据按照各种维度进行展示
+
+- 监控报警 发现问题后按一定的条件触发报警
+
 ### 3.1 前端埋点
 
 #### 3.1.1 代码埋点
@@ -67,19 +75,19 @@ UV | 指访问某个站点的不同IP地址的人数
 
 - 缺点是给数据传输和服务器增加了压力，并且也无法灵活的定制数据结构
 
-### 3.2 数据上报
-
-### 3.3 分析和计算 将采集到的数据进行加工汇总
-
-### 3.4 可视化展示 将数据按照各种维度进行展示
-
-### 3.5 监控报警 发现问题后按一定的条件触发报警
-
 ## 4 编写监控采集脚本
 
-### 4.1 JSError & PromiseError
+### 4.1 开通日志服务
 
-### 4.2 资源加载异常
+阿里云 Log Service
+
+### 4.2 监控错误
+
+#### 4.2.1 错误分类
+
+#### 4.2.2 数据模型
+
+#### 4.2.3 实现
 
 ### 4.3 接口异常
 
@@ -124,9 +132,9 @@ responseEnd | 返回浏览器从服务器收到（或从本地缓存读取，或
 unloadEventStart | 前一个页面的unload的时间戳 如果没有默认为0
 unloadEventEnd | 与 `unloadEventStart` 相对应，返回的是unload函数执行完成的时间戳
 domLoading | 返回当前网页DOM结构开始解析时的时间戳，此时 document.readyState 变为 loading，并将抛出 readyStateChange 事件
-domInteractive | 返回当前网页DOM结构结束解析、开始加载内嵌资源时的时间戳 document.readyState 变为 interactive，并将抛出 readyStateChange 事件
-domContentLoadedEventStart |
-domContentLoadedEventEnd |
+domInteractive | 返回当前网页DOM结构结束解析、开始加载内嵌资源时的时间戳 document.readyState 变为 interactive，并将抛出 readyStateChange 事件（注意只是DOM树解析完成，这时候并没有开始加载网页内的资源）
+domContentLoadedEventStart | 网页domContentLoaded事件发生的时间
+domContentLoadedEventEnd | 网页domContentLoaded事件脚本执行完毕的时间，domReady的时间
 domComplete | DOM树解析完成，且资源也准备就绪的时间 document.readyState 变成 complete，并将抛出 readyStateChange 事件
 loadEventStart | load事件发送给文档，即load回调函数开始执行的时间
 loadEventEnd | load回调函数执行完成的时间
