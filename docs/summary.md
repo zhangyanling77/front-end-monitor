@@ -182,7 +182,7 @@ time-to-interactive
 FP | First Paint（首次绘制）| 包括了任何用户自定义的背景绘制，它是首先将像素绘制到屏幕的时刻
 FCP | First Content Paint（首次内容绘制）| 时浏览器将第一个DOM渲染到屏幕的时间，可能时文本、图像、SVG等，其实就是白屏时间
 FMP | First Meaningful Paint（首次有意义绘制）| 页面有意义的内容渲染的时间
-LCP | Largest Content Paint（最大内容渲染）| 代表在 viewpoint 中最大的页面元素加载的时间
+LCP | Largest Contentful Paint（最大内容渲染）| 代表在 viewpoint 中最大的页面元素加载的时间
 DCL | DOMContentLoaded（DOM加载完成时间）| 当HTML文档被完全加载和解析完成后，DOMContentLoaded事件被触发，无需等待样式、图像和自框架完成加载
 L | onLoad | 当依赖的资源全部加载完毕后触发
 TTI | Time to Interactive （可交互时间）| 用于标记应用已经进行视觉渲染并能可靠响应用户输入的时间点
