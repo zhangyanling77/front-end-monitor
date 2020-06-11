@@ -7,11 +7,14 @@
 </head>
 <body>
   <div id="container">
-    <div class="content" style="width:600px;word-wrap:break-word;">
+    <!-- <div class="content" style="width:600px;word-wrap:break-word;"> -->
       <!-- <input id="errorBtn" type="button" value="点击抛出错误" onclick="errorClick()">
       <input id="promiseBtn" type="button" value="点击抛出Promise错误" onclick="promiseErrorClick()"> -->
       <!-- <input id="successBtn" type="button" value="ajax请求成功" onclick="sendAjaxSuccess()">
       <input id="failBtn" type="button" value="ajax请求失败" onclick="sendAjaxFail()"> -->
+    <!-- </div> -->
+    <div class="content" style="width:600px;height:600px;word-wrap:break-word;background-color:red;">
+      <button id="clickBtn" onclick="clickMe()">点我</button>
     </div>
   </div>
   <script>
@@ -61,10 +64,24 @@
 
     // 8.耗时
     // DOM解析完成，即使依赖的的资源没有加载完，也会触发这个事件
-    document.addEventListener('DOMContentLoaded', function() {
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   let start = Date.now();
+    //   while((Date.now() - start) < 1000) {}
+    // })
+    // 9.性能指标
+    setTimeout(() => {
+      let content = document.getElementsByClassName('content')[0];
+      let h1 = document.createElement('h1');
+      h1.innerHTML = '页面中有意义的内容';
+      h1.setAttribute('elementtiming', 'meaningful');
+      content.appendChild(h1);
+    }, 2000);
+
+    // 
+    function clickMe() {
       let start = Date.now();
-      while((Date.now() - start) < 1000) {}
-    })
+      while ((Date.now() - start) < 1000) { }
+    }
 
   </script>
   <!-- 3.资源加载错误 -->
